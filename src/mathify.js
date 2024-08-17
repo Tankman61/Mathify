@@ -49,7 +49,7 @@ function Mathify() {
       </nav>
 
       <div className="container">
-        <section id="intro" className="fade-in">
+        <section id="home" className="fade-in">
           <h1>Welcome to Mathify</h1>
           <p>Experience math like never before. Solve complex problems and watch them come to life in videos inspired by 3Blue1Brown.</p>
         </section>
