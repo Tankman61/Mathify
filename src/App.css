@@ -363,8 +363,43 @@ body {
   animation-delay: 1.2s;
  }
  
- 
- 
- 
- 
- 
+
+
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 10px;
+  background: #102a43;
+  border: 8px solid #29b6f6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  text-align: center;
+  color: white;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.input-group input:focus {
+  border-color: orange;
+  outline: none;
+}
+
