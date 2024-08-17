@@ -1,25 +1,91 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+function Mathify() {
+
+
+ useEffect(() => {
+   const fadeInElements = document.querySelectorAll('.fade-in');
+
+
+   const handleScroll = () => {
+     fadeInElements.forEach(element => {
+       const rect = element.getBoundingClientRect();
+       if (rect.top <= window.innerHeight * 0.8) {
+         element.classList.add('visible');
+       }
+     });
+   };
+
+
+   window.addEventListener('scroll', handleScroll);
+   handleScroll();
+   return () => window.removeEventListener('scroll', handleScroll);
+ }, []);
+
+
+ return (
+   <div>
+     <nav>
+       <div className="nav-container">
+         <a className="logo">Mathify</a>
+         <ul className="nav-links">
+           <li><a href="#home">Home</a></li>
+           <li><a href="#solve">Solve Problem</a></li>
+           <li><a href="#videos">Generated Videos</a></li>
+           <li><a href="#about">About</a></li>
+           <li><a href="#contact">Contact</a></li>
+         </ul>
+         <div className="login"><a href="#login">Login</a></div>
+       </div>
+     </nav>
+
+
+     <div className="container">
+       <section id="intro" className="fade-in">
+         <h1>Welcome to Mathify</h1>
+         <p>Experience math like never before. Solve complex problems and watch them come to life in videos inspired by 3Blue1Brown.</p>
+       </section>
+
+
+       <section id="solve" className="fade-in fade-in-delay-1">
+         <h2>Solve a Math Problem</h2>
+         <input type="text" id="problem-input" placeholder="Enter your math problem..." />
+         <button>Solve</button>
+         <div id="solution-results"></div>
+       </section>
+
+
+       <section id="videos" className="fade-in fade-in-delay-2">
+         <h2>Your Generated Videos</h2>
+         <p>Watch your problems being solved with visual clarity.</p>
+         <div className="video-placeholder">Video content goes here</div>
+       </section>
+
+
+       <section id="about" className="fade-in fade-in-delay-3">
+         <h2>About Mathify</h2>
+         <p>Mathify combines the power of the Wolfram API with stunning visual explanations to help you understand math in depth.</p>
+       </section>
+
+
+       <section id="contact" className="fade-in fade-in-delay-4">
+         <h2>Contact Us</h2>
+         <form>
+           <label htmlFor="name">Name:</label>
+           <input type="text" id="name" name="name" required />
+           <label htmlFor="email">Email:</label>
+           <input type="email" id="email" name="email" required />
+           <label htmlFor="message">Message:</label>
+           <textarea id="message" name="message" rows="4" required></textarea>
+           <button type="submit">Send</button>
+         </form>
+       </section>
+     </div>
+   </div>
+ );
 }
 
-export default App;
+
+export default Mathify;
