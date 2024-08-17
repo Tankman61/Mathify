@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './App.css';
 
 function Mathify() {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [preview, setPreview] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const fadeInElements = document.querySelectorAll('.fade-in');
-
     const handleScroll = () => {
       fadeInElements.forEach(element => {
         const rect = element.getBoundingClientRect();
@@ -23,13 +20,12 @@ function Mathify() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
-    if (file) {
-      const objectUrl = URL.createObjectURL(file);
-      setPreview(objectUrl);
-    }
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
   };
 
   return (
@@ -39,37 +35,41 @@ function Mathify() {
           <a className="logo">Mathify</a>
           <ul className="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#solve">Solve Problem</a></li>
+            {isLoggedIn && <li><a href="#solve">Solve Problem</a></li>}
             <li><a href="#videos">Generated Videos</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          <div className="login"><Link to="/login">Login</Link></div>
+          <div className="login">
+            {isLoggedIn ? (
+              <button onClick={handleLogout}>Logout</button>
+            ) : (
+              <button onClick={handleLogin}>Login</button>
+            )}
+          </div>
         </div>
       </nav>
 
       <div className="container">
-        <section id="home" className="fade-in">
-          <h1>Welcome to Mathify</h1>
-          <p>Experience math like never before. Solve complex problems and watch them come to life in videos inspired by 3Blue1Brown.</p>
-        </section>
+        {!isLoggedIn && (
+          <section id="intro" className="fade-in">
+            <h1>Welcome to Mathify</h1>
+            <p>Experience math like never before. Solve complex problems and watch them come to life in videos inspired by 3Blue1Brown.</p>
+          </section>
+        )}
 
-        <section id="solve" className="fade-in fade-in-delay-1">
-          <h2>Solve a Math Problem</h2>
-          <input type="text" id="problem-input" placeholder="Enter your math problem..." />
-          <button>Solve</button>
-          <div id="solution-results"></div>
-          
-          <div className="upload-photo-container">
-            <h2>Upload a Photo to Solve</h2>
-            <input type="file" accept="image/*" onChange={handleFileChange} />
-            {preview && (
-              <div className="image-preview">
-                <img src={preview} alt="Preview" />
-              </div>
-            )}
-          </div>
-        </section>
+        {isLoggedIn && (
+          <section id="solve" className="fade-in fade-in-delay-1">
+            <h2>Solve a Math Problem</h2>
+            <input type="text" id="problem-input" placeholder="Enter your math problem..." />
+            <button>Solve</button>
+            <div id="solution-results"></div>
+            <div id="photo-upload">
+              <h3>Or upload a photo to solve:</h3>
+              <input type="file" accept="image/*" />
+            </div>
+          </section>
+        )}
 
         <section id="videos" className="fade-in fade-in-delay-2">
           <h2>Your Generated Videos</h2>
