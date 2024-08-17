@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
 
 function Mathify() {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [preview, setPreview] = useState(null);
+
   useEffect(() => {
     const fadeInElements = document.querySelectorAll('.fade-in');
 
@@ -20,6 +23,15 @@ function Mathify() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    if (file) {
+      const objectUrl = URL.createObjectURL(file);
+      setPreview(objectUrl);
+    }
+  };
+
   return (
     <div>
       <nav>
@@ -32,9 +44,7 @@ function Mathify() {
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          <div className="login">
-            <Link to="/login">Login</Link>
-          </div>
+          <div className="login"><Link to="/login">Login</Link></div>
         </div>
       </nav>
 
@@ -49,6 +59,16 @@ function Mathify() {
           <input type="text" id="problem-input" placeholder="Enter your math problem..." />
           <button>Solve</button>
           <div id="solution-results"></div>
+          
+          <div className="upload-photo-container">
+            <h2>Upload a Photo to Solve</h2>
+            <input type="file" accept="image/*" onChange={handleFileChange} />
+            {preview && (
+              <div className="image-preview">
+                <img src={preview} alt="Preview" />
+              </div>
+            )}
+          </div>
         </section>
 
         <section id="videos" className="fade-in fade-in-delay-2">

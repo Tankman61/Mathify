@@ -14,7 +14,7 @@ function Login() {
         <label htmlFor="password">Password</label>
         <input type="password" id="password" />
       </div>
-      <button>Login</button>
+      <button class="btn">Login</button>
       <p>Don't have an account? <Link to="/register">Register here</Link></p>
     </div>
   );

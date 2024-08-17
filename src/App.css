@@ -403,3 +403,36 @@ body {
   outline: none;
 }
 
+
+.upload-photo-container input[type="file"] {
+  display: block;
+  margin: 0 auto;
+  background-color: #2b303b;
+  border: 1px solid #29b6f6;
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.upload-photo-container input[type="file"]::file-selector-button {
+  background-color: #29b6f6;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.image-preview {
+  margin-top: 1em;
+}
+
+.image-preview img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #29b6f6;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
