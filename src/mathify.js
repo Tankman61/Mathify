@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './App.css';
 
 function Mathify() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [preview, setPreview] = useState(null);
 
   useEffect(() => {
     const fadeInElements = document.querySelectorAll('.fade-in');
 
     const handleScroll = () => {
-      fadeInElements.forEach((element) => {
+      fadeInElements.forEach(element => {
         const rect = element.getBoundingClientRect();
         if (rect.top <= window.innerHeight * 0.8) {
           element.classList.add('visible');
@@ -21,12 +23,13 @@ function Mathify() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    if (file) {
+      const objectUrl = URL.createObjectURL(file);
+      setPreview(objectUrl);
+    }
   };
 
   return (
@@ -36,44 +39,37 @@ function Mathify() {
           <a className="logo">Mathify</a>
           <ul className="nav-links">
             <li><a href="#home">Home</a></li>
-            {isLoggedIn && <li><a href="#solve">Solve Problem</a></li>}
+            <li><a href="#solve">Solve Problem</a></li>
             <li><a href="#videos">Generated Videos</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          <div className="login">
-            {isLoggedIn ? (
-              <a href="#logout" onClick={handleLogout}>Logout</a>
-            ) : (
-              <a href="#login" onClick={handleLogin}>Login</a>
-            )}
-          </div>
+          <div className="login"><Link to="/login">Login</Link></div>
         </div>
       </nav>
 
       <div className="container">
-        {!isLoggedIn && (
-          <section id="intro" className="fade-in">
-            <h1>Welcome to Mathify</h1>
-            <p>Experience math like never before. Solve complex problems and watch them come to life in videos inspired by 3Blue1Brown.</p>
-          </section>
-        )}
+        <section id="intro" className="fade-in">
+          <h1>Welcome to Mathify</h1>
+          <p>Experience math like never before. Solve complex problems and watch them come to life in videos inspired by 3Blue1Brown.</p>
+        </section>
 
-        {isLoggedIn && (
-          <section id="solve" className="fade-in fade-in-delay-1">
-            <h2>Solve a Math Problem</h2>
-            <input type="text" id="problem-input" placeholder="Enter your math problem..." />
-            <button>Solve</button>
-            <div id="solution-results"></div>
-
-            {/* New Photo Upload Section */}
-            <div id="photo-upload" className="fade-in fade-in-delay-2">
-              <h2>Upload a Photo of Your Problem</h2>
-              <input type="file" id="photo-input" accept="image/*" />
-              <button>Upload</button>
-            </div>
-          </section>
-        )}
+        <section id="solve" className="fade-in fade-in-delay-1">
+          <h2>Solve a Math Problem</h2>
+          <input type="text" id="problem-input" placeholder="Enter your math problem..." />
+          <button>Solve</button>
+          <div id="solution-results"></div>
+          
+          <div className="upload-photo-container">
+            <h3>Upload a Photo to Solve</h3>
+            <input type="file" accept="image/*" onChange={handleFileChange} />
+            {preview && (
+              <div className="image-preview">
+                <img src={preview} alt="Preview" />
+              </div>
+            )}
+          </div>
+        </section>
 
         <section id="videos" className="fade-in fade-in-delay-2">
           <h2>Your Generated Videos</h2>
@@ -104,3 +100,4 @@ function Mathify() {
 }
 
 export default Mathify;
+
