@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function Mathify() {
@@ -6,8 +6,9 @@ function Mathify() {
 
   useEffect(() => {
     const fadeInElements = document.querySelectorAll('.fade-in');
+
     const handleScroll = () => {
-      fadeInElements.forEach(element => {
+      fadeInElements.forEach((element) => {
         const rect = element.getBoundingClientRect();
         if (rect.top <= window.innerHeight * 0.8) {
           element.classList.add('visible');
@@ -42,9 +43,9 @@ function Mathify() {
           </ul>
           <div className="login">
             {isLoggedIn ? (
-              <button onClick={handleLogout}>Logout</button>
+              <a href="#logout" onClick={handleLogout}>Logout</a>
             ) : (
-              <button onClick={handleLogin}>Login</button>
+              <a href="#login" onClick={handleLogin}>Login</a>
             )}
           </div>
         </div>
@@ -64,9 +65,12 @@ function Mathify() {
             <input type="text" id="problem-input" placeholder="Enter your math problem..." />
             <button>Solve</button>
             <div id="solution-results"></div>
-            <div id="photo-upload">
-              <h3>Or upload a photo to solve:</h3>
-              <input type="file" accept="image/*" />
+
+            {/* New Photo Upload Section */}
+            <div id="photo-upload" className="fade-in fade-in-delay-2">
+              <h2>Upload a Photo of Your Problem</h2>
+              <input type="file" id="photo-input" accept="image/*" />
+              <button>Upload</button>
             </div>
           </section>
         )}
