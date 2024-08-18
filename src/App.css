@@ -562,3 +562,41 @@ h1 {
   background-color: #3e3e5c; 
   color: #e0e0e0;
 }
+
+
+.app-footer {
+  background: linear-gradient(75deg, #163151 0%, #1c1f33 100%);
+  color: #e0e0e0; 
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  border-top: 2px solid #4f4f6f; 
+}
+
+.app-footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-links li {
+  display: inline;
+}
+
+.footer-links a {
+  color: #d0a4e0;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}

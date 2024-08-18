@@ -118,6 +118,14 @@ function Mathify() {
           <button type="submit">Send</button>
         </form>
       </section>
+      <footer className="app-footer">
+          <p>&copy; 2024 Mathify. All rights reserved.</p>
+          <ul className="footer-links">
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </footer>
     </div>
   );
 }
