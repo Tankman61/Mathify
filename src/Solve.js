@@ -7,6 +7,7 @@ function Solve() {
   const [file, setFile] = useState(null);
   const [results, setResults] = useState('');
   const [loading, setLoading] = useState(false);
+  const [videoUrl, setVideoUrl] = useState(''); // New state for the video URL
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -21,16 +22,19 @@ function Solve() {
   };
 
   const apiResponse = async () => {
-    // Implement API logic here i guess
+    // Implement API logic here and return the video URL
+    // This is a placeholder for where you'd get the video URL from your API response.
+    return 'https://example.com/video.mp4'; // Replace with the actual video URL from your API
   };
 
   const handleSolve = async () => {
     setLoading(true);
     setResults('');
+    setVideoUrl(''); // Clear previous video result
 
     try {
-      await apiResponse();
-      setResults('Result from API response');
+      const videoSrc = await apiResponse();
+      setVideoUrl(videoSrc); // Set the video URL from API response
     } catch (error) {
       console.error('Error:', error);
       setResults(`An error occurred. Please try again.\n\nTechnical information: ${error.message}`);
@@ -76,11 +80,14 @@ function Solve() {
           </button>
           <div className="result-container">
             <h3>Results</h3>
-            <textarea
-              readOnly
-              value={results}
-              placeholder="Results will be displayed here..."
-            />
+            {videoUrl ? (
+              <video controls>
+                <source src={videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <p>{results || "Results will be displayed here..."}</p>
+            )}
           </div>
           <Link to="/" className="back-button">Back to Home</Link>
         </section>
