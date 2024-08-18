@@ -16,6 +16,8 @@ body, html {
   letter-spacing: 1px;
   position: absolute;
   left: 50px;
+  width: 200px;
+  height: 60px;
   z-index: 10;
   transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -266,12 +268,14 @@ h1 {
 
 .circles {
   display: flex;
-  gap: 5px;
+  gap: 7px;
 }
-
+.yes {
+  margin-top: 150px;
+}
 .circle {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
 }
 
@@ -298,13 +302,14 @@ h1 {
   width: 100%;
   max-width: 180px;
   margin: 0 auto;
+  font-family: 'Poppins'
 }
 
 .browser-content {
   padding: 10px;
   height: calc(100% - 30px);
   overflow: hidden;
-  background-color: #1e1e2a;
+  background-color: #000000;
 }
 
 
@@ -508,6 +513,8 @@ h1 {
 .primary-cta:hover, .secondary-cta:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #7373d1;
+  color: #ffffff;
 }
 .back-button {
   display: inline-block;
@@ -522,6 +529,13 @@ h1 {
 
 .back-button:hover {
   background-color: #0056b3;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #a3b4ff, #b674cf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ 
 }
 
 

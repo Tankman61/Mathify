@@ -11,7 +11,7 @@ function Mathify() {
   const [isDeleting, setIsDeleting] = useState(false);
   const navigate = useNavigate();
 
-  const words = ['Imagine', 'Calculate', 'Solve', 'Learn'];
+  const words = ['imagine', 'calculate', 'solve', 'learn'];
   const typingSpeed = 150;
   const deletingSpeed = 100;
   const displayPause = 1000;
@@ -58,7 +58,7 @@ function Mathify() {
     <div className="app-container">
       <nav>
         <div className="nav-container">
-          <a className="logo">Mathify</a>
+        <img src ="logo.png" className="logo"></img>
           <ul className="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -72,7 +72,9 @@ function Mathify() {
 
       <div className="home-content">
         <div className="text-content">
-          <h1 className="text">Mathify allows you to {typingText}</h1>
+        <h1 className="text">
+        <span className="gradient-text">Mathify allows you to</span> {typingText}
+        </h1>
           <p className="subtitle">
             Immerse yourself in a futuristic learning experience designed to boost your mathematical prowess.
           </p>

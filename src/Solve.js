@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 import './App.css';
 
 function Solve() {
@@ -8,6 +7,7 @@ function Solve() {
   const [file, setFile] = useState(null);
   const [results, setResults] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -20,48 +20,17 @@ function Solve() {
     }
   };
 
+  const apiResponse = async () => {
+    // Implement API logic here i guess
+  };
+
   const handleSolve = async () => {
     setLoading(true);
     setResults('');
 
     try {
-      let resultText = '';
-
-      if (file) {
-        const formData = new FormData();
-        formData.append('file', file);
-
-
-        const openaiResponse = await axios.post(
-          'https://api.openai.com/v1/images-to-text', 
-          formData,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-              'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
-            },
-          }
-        );
-
-        resultText = openaiResponse.data.text;
-        if (!resultText) {
-          throw new Error('No text was extracted from the image.');
-        }
-      } else if (input) {
-        resultText = input;
-      }
-       const wolframResponse = await axios.get('https://api.wolframalpha.com/v2/query', {
-        params: {
-            appid: process.env.REACT_APP_WOLFRAM_APP_ID,
-            input: resultText,
-            podstate: 'Result__Step-by-step+solution',
-            format: 'plaintext',
-        },
-       });
-      const resultPods = wolframResponse.data.queryresult.pods;
-      const finalResult = resultPods.map(pod => pod.subpods.map(subpod => subpod.plaintext)).join('\n');
-
-      setResults(finalResult || 'No result returned');
+      await apiResponse();
+      setResults('Result from API response');
     } catch (error) {
       console.error('Error:', error);
       setResults(`An error occurred. Please try again.\n\nTechnical information: ${error.message}`);
@@ -70,32 +39,52 @@ function Solve() {
     }
   };
 
+  const handleProtectedNavigation = (path) => {
+    // Perform any necessary checks before navigation
+    navigate(path);
+  };
+
   return (
-    <div class= "yes">
-    <section id="solve" className="math-paper">
-      <h2>Solve a Math Problem</h2>
-      <textarea
-        placeholder="Enter your math problem here..."
-        value={input}
-        onChange={handleInputChange}
-      />
-      <div className="upload-photo-container">
-        <h3>Upload a Photo to Solve</h3>
-        <input type="file" accept="image/*" onChange={handleFileChange} />
+    <div className="app-container">
+      <nav>
+        <div className="nav-container">
+          <img src ="logo.png" className="logo"></img>
+          <ul className="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><Link to="/solve">Solve</Link></li>
+            <li><Link to="/videos">Videos</Link></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div className="yes">
+        <section id="solve" className="math-paper" style={{ marginTop: '50px' }}>
+
+          <h2>Solve a Math Problem</h2>
+          <textarea
+            placeholder="Enter your math problem here..."
+            value={input}
+            onChange={handleInputChange}
+          />
+          <div className="upload-photo-container">
+            <h3>Upload a Photo to Solve</h3>
+            <input type="file" accept="image/*" onChange={handleFileChange} />
+          </div>
+          <button onClick={handleSolve} disabled={loading}>
+            {loading ? 'Processing...' : 'Solve'}
+          </button>
+          <div className="result-container">
+            <h3>Results</h3>
+            <textarea
+              readOnly
+              value={results}
+              placeholder="Results will be displayed here..."
+            />
+          </div>
+          <Link to="/" className="back-button">Back to Home</Link>
+        </section>
       </div>
-      <button onClick={handleSolve} disabled={loading}>
-        {loading ? 'Processing...' : 'Solve'}
-      </button>
-      <div className="result-container">
-        <h3>Results</h3>
-        <textarea
-          readOnly
-          value={results}
-          placeholder="Results will be displayed here..."
-        />
-      </div>
-      <Link to="/" className="back-button">Back to Home</Link>
-    </section>
     </div>
   );
 }
