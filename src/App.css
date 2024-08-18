@@ -266,12 +266,12 @@ h1 {
 
 .circles {
   display: flex;
-  gap: 5px;
+  gap: 7px;
 }
 
 .circle {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
 }
 
@@ -298,13 +298,14 @@ h1 {
   width: 100%;
   max-width: 180px;
   margin: 0 auto;
+  font-family: 'Poppins'
 }
 
 .browser-content {
   padding: 10px;
   height: calc(100% - 30px);
   overflow: hidden;
-  background-color: #1e1e2a;
+  background-color: #000000;
 }
 
 
@@ -508,6 +509,8 @@ h1 {
 .primary-cta:hover, .secondary-cta:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #7373d1;
+  color: #ffffff;
 }
 .back-button {
   display: inline-block;
@@ -524,6 +527,11 @@ h1 {
   background-color: #0056b3;
 }
 
+.gradient-text {
+  background: linear-gradient(90deg, #9c9c9c 0%, #859398 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .math-paper {
   max-width: 800px;
