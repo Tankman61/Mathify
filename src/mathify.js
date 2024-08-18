@@ -69,9 +69,9 @@ function Mathify() {
 
       <div className="home-content">
         <div className="text-content">
-          <h1 className="blue-gradient">
-            Mathify allows you to {typingText}
-          </h1>
+        <h1 className="text">
+        <span className="gradient-text">Mathify allows you to</span> {typingText}
+        </h1>
           <p className="subtitle">
             Immerse yourself in a futuristic learning experience designed to boost your mathematical prowess.
           </p>
