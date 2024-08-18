@@ -527,8 +527,8 @@ h1 {
   background-color: #0056b3;
 }
 
-.gradient-text {
-  background: linear-gradient(90deg, #9c9c9c 0%, #859398 100%);
+.blue-gradient {
+  background: linear-gradient(90deg, #a3b4ff, #b674cf 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
