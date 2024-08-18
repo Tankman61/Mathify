@@ -20,7 +20,7 @@ function Register() {
 
       if (response.status === 201) {
         console.log('User registered successfully');
-        navigate('/login');  // Redirect to the login page
+        navigate('/login'); 
       }
     } catch (error) {
       console.error('Registration failed', error);
@@ -37,7 +37,7 @@ function Register() {
       <h2>Register</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <div className="input-group">
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">Username: </label>
         <input
           type="text"
           id="username"
@@ -46,7 +46,7 @@ function Register() {
         />
       </div>
       <div className="input-group">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email: </label>
         <input
           type="email"
           id="email"
@@ -55,7 +55,7 @@ function Register() {
         />
       </div>
       <div className="input-group">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">Password: </label>
         <input
           type="password"
           id="password"

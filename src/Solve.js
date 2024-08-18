@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './App.css';
 
 function Solve() {
   const [input, setInput] = useState('');
@@ -71,6 +72,7 @@ function Solve() {
   };
 
   return (
+    <div class= "yes">
     <section id="solve" className="math-paper">
       <h2>Solve a Math Problem</h2>
       <textarea
@@ -95,6 +97,7 @@ function Solve() {
       </div>
       <Link to="/" className="back-button">Back to Home</Link>
     </section>
+    </div>
   );
 }
 

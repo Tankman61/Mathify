@@ -20,7 +20,7 @@ function Mathify() {
           setTypingText(prev => prev.slice(0, -1));
         } else {
           setIsDeleting(false);
-          setTimeout(() => {}, pauseTime); // Delay before starting to type the next word
+          setTimeout(() => {}, pauseTime); 
           setIndex((index + 1) % words.length);
         }
       } else {
@@ -28,7 +28,7 @@ function Mathify() {
           setTypingText(prev => prev + words[index].charAt(typingText.length));
         } else {
           setIsDeleting(true);
-          setTimeout(() => {}, pauseTime); // Delay before starting to delete
+          setTimeout(() => {}, pauseTime); 
         }
       }
     };
@@ -75,7 +75,7 @@ function Mathify() {
           </p>
           <div className="cta-buttons">
             <a href="/solve" className="cta-button primary-cta">Start Solving</a>
-            <a href="/about" className="cta-button secondary-cta">Learn More</a>
+            <a href="/#about" className="cta-button secondary-cta">Learn More</a>
           </div>
         </div>
 
@@ -90,7 +90,7 @@ function Mathify() {
           </div>
           <div className="browser-content">
             <div className="image-content">
-              <img src="logo.svg" alt="Math visualization" />
+              <img src="https://cdn.discordapp.com/attachments/1274170534963449946/1274517964674039879/284077951-b5e94ba3-c1c0-4f33-ade6-3ce6e67fa0ef.gif?ex=66c28ada&is=66c1395a&hm=242e8146b9cfb3f5ffc02306b41014ceaa7882ac9f2619165501ac9328e5e87a&" alt="Math visualization" />
             </div>
           </div>
         </div>
