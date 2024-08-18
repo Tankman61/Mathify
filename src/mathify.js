@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './App.css';
 
+
+
 function Mathify() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [typingText, setTypingText] = useState('');
@@ -13,6 +15,7 @@ function Mathify() {
   const typingSpeed = 150;
   const deletingSpeed = 100;
   const displayPause = 1000;
+  const account = localStorage.getItem("user");
 
   useEffect(() => {
 

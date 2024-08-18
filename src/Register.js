@@ -12,24 +12,23 @@ function Register() {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/registration/', {
-        username,
-        email,
-        password
+      const response = await axios.post('https://http://127.0.0.1:5000/signup', {
+        "username": username,
+        "password" : password
       });
 
-      if (response.status === 201) {
+      if (response == "authorized") {
         console.log('User registered successfully');
         navigate('/login'); 
       }
-    } catch (error) {
-      console.error('Registration failed', error);
-      if (error.response && error.response.data) {
-        setErrorMessage(Object.values(error.response.data).flat().join(' '));
-      } else {
-        setErrorMessage('Registration failed. Please try again.');
-      }
+  } catch (error) {
+    console.error('Registration failed', error);
+    if (error.response && error.response.data) {
+      setErrorMessage(Object.values(error.response.data).flat().join(' '));
+    } else {
+      setErrorMessage('Registration failed. Please try again.');
     }
+  }
   };
 
   return (
