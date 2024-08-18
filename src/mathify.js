@@ -86,7 +86,7 @@ function Mathify() {
               <span className="circle yellow"></span>
               <span className="circle green"></span>
             </div>
-            <div className="address-bar">Generated Content</div>
+            <div className="address-bar">Generated Animation</div>
           </div>
           <div className="browser-content">
             <div className="image-content">
