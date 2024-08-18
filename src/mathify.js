@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './App.css';
 
 function Mathify() {
-  const [preview, setPreview] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [typingText, setTypingText] = useState('');
   const [index, setIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const words = ['Visualize', 'Calculate', 'Solve', 'Learn'];
+  const navigate = useNavigate();
+
+  const words = ['Mathify', 'Calculate', 'Solve', 'Learn'];
   const typingSpeed = 150;
   const deletingSpeed = 100;
-  const pauseTime = 5000;
-  const deletePauseTime = 3000;
+  const displayPause = 1000;
+
+  useEffect(() => {
+    // Replace with real authentication check
+    const userIsAuthenticated = false;
+    setIsAuthenticated(userIsAuthenticated);
+  }, []);
 
   useEffect(() => {
     const handleTypingEffect = () => {
@@ -20,23 +27,30 @@ function Mathify() {
           setTypingText(prev => prev.slice(0, -1));
         } else {
           setIsDeleting(false);
-          setTimeout(() => {}, deletePauseTime);
-          setIndex((index + 1) % words.length);
+          setIndex((prevIndex) => (prevIndex + 1) % words.length);
         }
       } else {
         if (typingText.length < words[index].length) {
           setTypingText(prev => prev + words[index].charAt(typingText.length));
         } else {
-          setIsDeleting(true);
-          setTimeout(() => {}, pauseTime);
+          setTimeout(() => setIsDeleting(true), displayPause);
         }
       }
     };
 
-    const typingInterval = setInterval(handleTypingEffect, isDeleting ? deletingSpeed : typingSpeed);
+    const typingTimeout = setTimeout(handleTypingEffect, isDeleting ? deletingSpeed : typingSpeed);
 
-    return () => clearInterval(typingInterval);
+    return () => clearTimeout(typingTimeout);
   }, [typingText, isDeleting, index]);
+
+  const handleProtectedNavigation = (path) => {
+    if (isAuthenticated) {
+      navigate(path);
+    } else {
+      navigate('/login');
+    }
+  };
+
   return (
     <div className="app-container">
       <nav>
@@ -45,8 +59,8 @@ function Mathify() {
           <ul className="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><Link to="/solve">Solve</Link></li>
-            <li><Link to="/videos">Videos</Link></li>
+            <li><a onClick={() => handleProtectedNavigation('/solve')}>Solve</a></li>
+            <li><a onClick={() => handleProtectedNavigation('/videos')}>Videos</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
           <div className="login"><Link to="/login">Login</Link></div>
@@ -55,12 +69,12 @@ function Mathify() {
 
       <div className="home-content">
         <div className="text-content">
-          <h1 className ="text">Mathify allows you to {typingText}</h1>
+          <h1 className="text">Mathify allows you to {typingText}</h1>
           <p className="subtitle">
             Immerse yourself in a futuristic learning experience designed to boost your mathematical prowess.
           </p>
           <div className="cta-buttons">
-            <a href="/solve" className="cta-button primary-cta">Start Solving</a>
+            <a onClick={() => handleProtectedNavigation('/solve')} className="cta-button primary-cta">Start Solving</a>
             <a href="#about" className="cta-button secondary-cta">Learn More</a>
           </div>
         </div>
@@ -105,13 +119,13 @@ function Mathify() {
         </form>
       </section>
       <footer className="app-footer">
-          <p>&copy; 2024 Mathify. All rights reserved.</p>
-          <ul className="footer-links">
-            <li><a href="/terms">Terms of Service</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-          </ul>
-        </footer>
+        <p>&copy; 2024 Mathify. All rights reserved.</p>
+        <ul className="footer-links">
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </footer>
     </div>
   );
 }
