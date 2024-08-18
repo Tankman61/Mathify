@@ -9,7 +9,7 @@ function Mathify() {
   const [isDeleting, setIsDeleting] = useState(false);
   const navigate = useNavigate();
 
-  const words = ['Mathify', 'Calculate', 'Solve', 'Learn'];
+  const words = ['imagine', 'calculate', 'solve', 'learn'];
   const typingSpeed = 150;
   const deletingSpeed = 100;
   const displayPause = 1000;
