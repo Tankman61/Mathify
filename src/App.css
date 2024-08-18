@@ -529,7 +529,7 @@ h1 {
   background-color: #0056b3;
 }
 
-.gradient-textgi {
+.gradient-text {
   background: linear-gradient(90deg, #a3b4ff, #b674cf 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
