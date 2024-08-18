@@ -58,10 +58,10 @@ function Mathify() {
           <a className="logo">Mathify</a>
           <ul className="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><Link to="/about">About</Link></li>
+            <li><a href="#about">About</a></li>
             <li><Link to="/solve">Solve</Link></li>
             <li><Link to="/videos">Videos</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
           <div className="login"><Link to="/login">Login</Link></div>
         </div>
@@ -74,8 +74,8 @@ function Mathify() {
             Immerse yourself in a futuristic learning experience designed to boost your mathematical prowess.
           </p>
           <div className="cta-buttons">
-            <a href="#solve" className="cta-button primary-cta">Start Solving</a>
-            <a href="#about" className="cta-button secondary-cta">Learn More</a>
+            <a href="/solve" className="cta-button primary-cta">Start Solving</a>
+            <a href="/about" className="cta-button secondary-cta">Learn More</a>
           </div>
         </div>
 
@@ -101,6 +101,23 @@ function Mathify() {
           </svg>
         </div>
       </div>
+      <section id="about" className="math-paper">
+        <h2>About Mathify</h2>
+        <p>Mathify combines the power of the Wolfram API with stunning visual explanations to help you understand math in depth.</p>
+      </section>
+
+      <section id="contact" className="math-paper">
+        <h2>Contact Us</h2>
+        <form>
+          <label htmlFor="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <label htmlFor="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <label htmlFor="message">Message:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </section>
     </div>
   );
 }

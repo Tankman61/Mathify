@@ -22,7 +22,7 @@ nav {
   top: 0;
   left: 0;
   z-index: 1000;
-  font-family: 'Poppins', sans-serif; /* Updated font for navbar */
+  font-family: 'Poppins', sans-serif;
 }
 
 .nav-container {
@@ -75,28 +75,30 @@ nav {
 h1 {
   font-size: 3.5rem;
   margin-bottom: 1rem;
-  color: #a5b4fc; /* Updated color for Mathify */
+  color: #a5b4fc; 
 }
 
 .subtitle {
   font-size: 1.5rem;
   margin-bottom: 2rem;
   max-width: 600px;
-  font-family: 'Poppins', sans-serif; /* Updated font for subtitle */
+  font-family: 'Poppins', sans-serif; 
 }
 
 .highlight {
-  color: #a5b4fc; /* Highlight color for typing text */
+  color: #a5b4fc; 
 }
 
 .typing-text {
   display: inline-block;
-  font-family: 'Poppins', sans-serif; /* Updated font for typing text */
-  border-right: 2px solid #a5b4fc; /* Updated border color */
+  font-family: 'Poppins', sans-serif;
+  border-right: 2px solid #a5b4fc; 
   white-space: nowrap;
   overflow: hidden;
+  text-align: center;
   animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
-  color: #a5b4fc; /* Updated color for typing text */
+  color: #a5b4fc;
+  padding-top: 50px;
 }
 
 @keyframes typing {
@@ -113,26 +115,26 @@ h1 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start; /* Align items to the left */
-  height: 100vh; /* Full viewport height */
-  padding: 0 20px; /* Add padding to the left and right */
+  justify-content: flex-start;
+  height: 100vh;
+  padding: 0 20px; 
 }
 
 .title {
   flex: 1;
-  max-width: 600px; /* Adjust width as needed */
-  margin-right: 20px; /* Space for the browser window */
+  max-width: 600px; 
+  margin-right: 20px;
 }
 
 .browser-window {
   flex-shrink: 0;
-  width: 400px; /* Width of the browser window */
-  height: 300px; /* Height of the browser window */
-  border: 1px solid #ccc; /* Border color */
+  width: 400px; 
+  height: 300px; 
+  border: 1px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
-  background-color: #f8f8f8; /* Background color */
-  color: #000; /* Text color */
+  background-color: #f8f8f8; 
+  color: #000; 
   position: relative;
 }
 
@@ -157,29 +159,29 @@ h1 {
 }
 
 .circle.red {
-  background-color: #ff5f56; /* Red */
+  background-color: #ff5f56;
 }
 
 .circle.yellow {
-  background-color: #ffbd2e; /* Yellow */
+  background-color: #ffbd2e; 
 }
 
 .circle.green {
-  background-color: #27c93f; /* Green */
+  background-color: #27c93f;
 }
 
 .address-bar {
   font-size: 14px;
   color: #888;
-  background-color: #fff; /* Address bar background */
+  background-color: #fff;
   padding: 2px 8px;
   border-radius: 5px;
-  border: 1px solid #ccc; /* Address bar border */
+  border: 1px solid #ccc; 
 }
 
 .browser-content {
   padding: 10px;
-  height: calc(100% - 30px); /* Adjust to fit content */
+  height: calc(100% - 30px);
   overflow: hidden;
 }
 
@@ -270,15 +272,15 @@ h1 {
 
 .typing-text {
   display: inline-block;
-  font-family: 'Poppins', sans-serif; /* Updated font for typing text */
-  border-right: 2px solid #a5b4fc; /* Updated border color */
+  font-family: 'Poppins', sans-serif;
+  border-right: 2px solid #a5b4fc; 
   white-space: nowrap;
   overflow: hidden;
   animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
-  color: #a5b4fc; /* Updated color for typing text */
+  color: #a5b4fc;
 }
 
-/* Centering the text-content */
+
 .home-content .text-content {
   text-align: center;
 }
@@ -304,7 +306,7 @@ h1 {
   text-decoration: none;
   border-radius: 5px;
   transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif; /* Updated font for CTA buttons */
+  font-family: 'Poppins', sans-serif;
 }
 
 .primary-cta {
