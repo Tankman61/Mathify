@@ -50,15 +50,14 @@ function Solve() {
       } else if (input) {
         resultText = input;
       }
-       const wolframResponse = await axios.get('http://api.wolframalpha.com/v2/query', {
+       const wolframResponse = await axios.get('https://api.wolframalpha.com/v2/query', {
         params: {
-          input: resultText,
-          appid: process.env.REACT_APP_WOLFRAM_APP_ID,
-          format: 'plaintext',
-          output: 'JSON',
+            appid: process.env.REACT_APP_WOLFRAM_APP_ID,
+            input: resultText,
+            podstate: 'Result__Step-by-step+solution',
+            format: 'plaintext',
         },
-      });
-
+       });
       const resultPods = wolframResponse.data.queryresult.pods;
       const finalResult = resultPods.map(pod => pod.subpods.map(subpod => subpod.plaintext)).join('\n');
 

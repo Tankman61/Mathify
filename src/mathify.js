@@ -7,11 +7,11 @@ function Mathify() {
   const [typingText, setTypingText] = useState('');
   const [index, setIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [timeout, setTimeout] = useState(200);
-  const words = ['Mathify', 'Calculate', 'Solve', 'Learn'];
+  const words = ['Visualize', 'Calculate', 'Solve', 'Learn'];
   const typingSpeed = 150;
   const deletingSpeed = 100;
-  const pauseTime = 2000;
+  const pauseTime = 5000;
+  const deletePauseTime = 3000;
 
   useEffect(() => {
     const handleTypingEffect = () => {
@@ -20,7 +20,7 @@ function Mathify() {
           setTypingText(prev => prev.slice(0, -1));
         } else {
           setIsDeleting(false);
-          setTimeout(() => {}, pauseTime); 
+          setTimeout(() => {}, deletePauseTime);
           setIndex((index + 1) % words.length);
         }
       } else {
@@ -28,7 +28,7 @@ function Mathify() {
           setTypingText(prev => prev + words[index].charAt(typingText.length));
         } else {
           setIsDeleting(true);
-          setTimeout(() => {}, pauseTime); 
+          setTimeout(() => {}, pauseTime);
         }
       }
     };
@@ -37,20 +37,6 @@ function Mathify() {
 
     return () => clearInterval(typingInterval);
   }, [typingText, isDeleting, index]);
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setPreview(null);
-    }
-  };
-
   return (
     <div className="app-container">
       <nav>
