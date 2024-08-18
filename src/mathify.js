@@ -69,13 +69,13 @@ function Mathify() {
 
       <div className="home-content">
         <div className="text-content">
-          <h1>Mathify allows you to <span className="typing-text">{typingText}</span></h1>
+          <h1 className ="text">Mathify allows you to {typingText}</h1>
           <p className="subtitle">
             Immerse yourself in a futuristic learning experience designed to boost your mathematical prowess.
           </p>
           <div className="cta-buttons">
             <a href="/solve" className="cta-button primary-cta">Start Solving</a>
-            <a href="/#about" className="cta-button secondary-cta">Learn More</a>
+            <a href="#about" className="cta-button secondary-cta">Learn More</a>
           </div>
         </div>
 

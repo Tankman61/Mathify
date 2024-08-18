@@ -33,7 +33,7 @@ function Solve() {
 
 
         const openaiResponse = await axios.post(
-          'https://api.openai.com/v1/images-to-text', // i have no clue if chatgpt even does this i'm just so tired - this is not an actual endpoint
+          'https://api.openai.com/v1/images-to-text', 
           formData,
           {
             headers: {
