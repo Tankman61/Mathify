@@ -15,7 +15,7 @@ function Mathify() {
   const displayPause = 1000;
 
   useEffect(() => {
-    // Replace with real authentication check
+
     const userIsAuthenticated = false;
     setIsAuthenticated(userIsAuthenticated);
   }, []);
