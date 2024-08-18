@@ -48,7 +48,7 @@ function Solve() {
     <div className="app-container">
       <nav>
         <div className="nav-container">
-          <a className="logo">Mathify</a>
+          <img src ="logo.png" className="logo"></img>
           <ul className="nav-links">
             <li><a href="/">Home</a></li>
             <li><a href="/#about">About</a></li>
