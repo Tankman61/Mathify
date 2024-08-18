@@ -268,7 +268,9 @@ h1 {
   display: flex;
   gap: 7px;
 }
-
+.yes {
+  margin-top: 150px;
+}
 .circle {
   width: 11px;
   height: 11px;
