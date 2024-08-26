@@ -1,5 +1,5 @@
 # Mathify
-**Made with React.js, Flask.py, Python, JavaScript, Wolfram API, OpenAI API, Manima**
+**Made with React.js, Flask.py, Python, JavaScript, Wolfram API, OpenAI API, Manim**
 
 >[!NOTE]
 >This project was made for the 36 hour hackathon, IgnitionHacks.
