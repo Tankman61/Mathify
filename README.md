@@ -2,7 +2,7 @@
 **Made with React.js, Flask.py, Python, JavaScript, Wolfram API, OpenAI API, Manim**
 
 >[!NOTE]
->This project was made for the 36 hour hackathon, IgnitionHacks.
+>This project was made for the 36 hour hackathon, IgnitionHacks, and won the Wolfram Award for Best Use of API.
 
 Inspired by 3b1b, we sought out to make a system that allows you to revolutionize your ability to learn math!
 
