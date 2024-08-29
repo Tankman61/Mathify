@@ -7,7 +7,7 @@ function Solve() {
   const [file, setFile] = useState(null);
   const [results, setResults] = useState('');
   const [loading, setLoading] = useState(false);
-  const [videoUrl, setVideoUrl] = useState(''); // New state for the video URL
+  const [videoUrl, setVideoUrl] = useState('');
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -22,19 +22,17 @@ function Solve() {
   };
 
   const apiResponse = async () => {
-    // Implement API logic here and return the video URL
-    // This is a placeholder for where you'd get the video URL from your API response.
-    return 'https://example.com/video.mp4'; // Replace with the actual video URL from your API
+    return 'https://example.com/video.mp4'; 
   };
 
   const handleSolve = async () => {
     setLoading(true);
     setResults('');
-    setVideoUrl(''); // Clear previous video result
+    setVideoUrl(''); 
 
     try {
       const videoSrc = await apiResponse();
-      setVideoUrl(videoSrc); // Set the video URL from API response
+      setVideoUrl(videoSrc); 
     } catch (error) {
       console.error('Error:', error);
       setResults(`An error occurred. Please try again.\n\nTechnical information: ${error.message}`);
@@ -44,7 +42,6 @@ function Solve() {
   };
 
   const handleProtectedNavigation = (path) => {
-    // Perform any necessary checks before navigation
     navigate(path);
   };
 
